@@ -68,8 +68,6 @@ window.addEventListener("load", function(){
       
       //updating launchStatus
       function checkLaunchStatus(){
-         let fuelStatus = document.getElementById("fuelStatus");
-         let cargoStatus = document.getElementById("cargoStatus");
          let launchStatus = document.getElementById("launchStatus");
 
          console.log(pilotName.value);
