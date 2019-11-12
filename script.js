@@ -37,22 +37,36 @@ window.addEventListener("load", function(){
       let copilotStatus = document.getElementById("copilotStatus");
       copilotStatus.innerHTML = `Copilot ${copilotName.value} Ready`;
       console.log(copilotStatus);
-      console.log(fuelLevel.value);
 
       //updating faultyItems div due to fuel being too low
       function checkFuelLevel(){
          let faultyItemsDiv = document.getElementById("faultyItems");
+         let fuelStatus = document.getElementById("fuelStatus");
          let launchStatus = document.getElementById("launchStatus");
 
          if(fuelLevel.value < 10000){
             faultyItemsDiv.style.visibility = "visible";
-            faultyItemsDiv.innerHTML = "There is too much mass for the shuttle to take off";
+            fuelStatus.innerHTML = "There is not enough fuel for the journey";
             launchStatus.innerHTML = "Shuttle not ready for launch";
             launchStatus.style.color = "red";
          }
-
       }
       checkFuelLevel();
+      
+      //updating faultyItems div due to cargo mass being too high
+      function checkCargoMass(){
+         let faultyItemsDiv = document.getElementById("faultyItems");
+         let cargoStatus = document.getElementById("cargoStatus");
+         let launchStatus = document.getElementById("launchStatus");
+
+         if(cargoMass.value > 10000){
+            faultyItemsDiv.style.visibility = "visible";
+            cargoStatus.innerHTML = "There is too much mass for the shuttle to take off";
+            launchStatus.innerHTML = "Shuttle not ready for launch";
+            launchStatus.style.color = "red";
+         }
+      }
+      checkCargoMass();
       
 
    });
