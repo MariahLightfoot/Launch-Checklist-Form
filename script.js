@@ -32,11 +32,9 @@ window.addEventListener("load", function(){
       //updating pilotStatus and copilotStatus with names entered in form
       let pilotStatus = document.getElementById("pilotStatus");
       pilotStatus.innerHTML = `Pilot ${pilotName.value} Ready`;
-      console.log(pilotStatus);
 
       let copilotStatus = document.getElementById("copilotStatus");
       copilotStatus.innerHTML = `Copilot ${copilotName.value} Ready`;
-      console.log(copilotStatus);
 
       //updating faultyItems div due to fuel being too low
       function checkFuelLevel(){
@@ -44,7 +42,7 @@ window.addEventListener("load", function(){
          let fuelStatus = document.getElementById("fuelStatus");
          let launchStatus = document.getElementById("launchStatus");
 
-         if(fuelLevel.value < 10000){
+         if(fuelLevel.value <= 10000){
             faultyItemsDiv.style.visibility = "visible";
             fuelStatus.innerHTML = "There is not enough fuel for the journey";
             launchStatus.innerHTML = "Shuttle not ready for launch";
@@ -59,7 +57,7 @@ window.addEventListener("load", function(){
          let cargoStatus = document.getElementById("cargoStatus");
          let launchStatus = document.getElementById("launchStatus");
 
-         if(cargoMass.value > 10000){
+         if(cargoMass.value >= 10000){
             faultyItemsDiv.style.visibility = "visible";
             cargoStatus.innerHTML = "There is too much mass for the shuttle to take off";
             launchStatus.innerHTML = "Shuttle not ready for launch";
@@ -68,6 +66,23 @@ window.addEventListener("load", function(){
       }
       checkCargoMass();
       
+      //updating launchStatus
+      function checkLaunchStatus(){
+         let fuelStatus = document.getElementById("fuelStatus");
+         let cargoStatus = document.getElementById("cargoStatus");
+         let launchStatus = document.getElementById("launchStatus");
+
+         console.log(pilotName.value);
+         console.log(copilotName.value);
+         console.log(fuelLevel.value);
+         console.log(cargoMass.value);
+         if(pilotName.value !== "" && copilotName.value !== "" && fuelLevel.value > 10000 && cargoMass.value < 10000){
+            launchStatus.innerHTML = "Shuttle is ready for launch";
+            launchStatus.style.color = "green";
+         }
+      }
+      checkLaunchStatus();
+      event.preventDefault();
 
    });
 });
