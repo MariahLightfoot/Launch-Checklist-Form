@@ -11,7 +11,6 @@ window.addEventListener("load", function(){
 
       if(pilotName.value === "" || copilotName.value === "" || fuelLevel.value === "" ||cargoMass.value === ""){
          alert("All fields are required!");
-         event.preventDefault();
       }
 
       //validation to make sure fuel level and cargo mass are numbers
@@ -21,10 +20,8 @@ window.addEventListener("load", function(){
 
          if(isNaN(checkingFuelLevel)){
             alert("The Fuel Level (L) field must be in a number format!");
-            event.preventDefault();
          } else if(isNaN(checkingCargoMass)){
             alert("The Cargo Mass (kg) field must be in a number format!");
-            event.preventDefault();
          }
       }
       checkInputTypes();
