@@ -88,7 +88,6 @@ window.addEventListener("load", function(){
    fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
       response.json().then(function(json){
          let randomNumber = Math.floor(Math.random() * Math.floor(json.length));
-         this.console.log(randomNumber);
          const planetData = document.getElementById("missionTarget");
          planetData.innerHTML = `
          <h2>Mission Destination</h2>
