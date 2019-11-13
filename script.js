@@ -77,27 +77,29 @@ window.addEventListener("load", function(){
                launchStatus.innerHTML = "Shuttle is ready for launch";
                launchStatus.style.color = "green";
             }
-         
          }
          checkLaunchStatus();
-         }
+      }
 
          event.preventDefault();
       });
 
+
    fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
       response.json().then(function(json){
+         let randomNumber = Math.floor(Math.random() * Math.floor(json.length));
+         this.console.log(randomNumber);
          const planetData = document.getElementById("missionTarget");
          planetData.innerHTML = `
          <h2>Mission Destination</h2>
          <ol>
-            <li>Name: ${json[0].name}</li>
-            <li>Diameter: ${json[0].destination}</li>
-            <li>Star: ${json[0].star}</li>
-            <li>Distance from Earth: ${json[0].distance}</li>
-            <li>Number of Moons: ${json[0].moons}</li>
+            <li>Name: ${json[randomNumber].name}</li>
+            <li>Diameter: ${json[randomNumber].destination}</li>
+            <li>Star: ${json[randomNumber].star}</li>
+            <li>Distance from Earth: ${json[randomNumber].distance}</li>
+            <li>Number of Moons: ${json[randomNumber].moons}</li>
          </ol>
-         <img src="${json[0].image}">
+         <img src="${json[randomNumber].image}">
          `
       });
    });
